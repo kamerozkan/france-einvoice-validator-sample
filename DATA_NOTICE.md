@@ -8,19 +8,21 @@ The Actor and this repository are independent, unofficial products. They are not
 
 ## Provenance snapshot
 
-The three JSON records were retrieved on 2026-07-29 from successful Apify run `zRojE158Pc2yIwNba`, dataset `N3fw2lYnnT7Jmeica`.
+The three JSON records were retrieved on 2026-07-29 from successful Apify run `gihL6N622hQRnwK7K`, build `0.0.4` (`vv4freSAs5T2ErfTr`), dataset `akTMJBhWLCtUX8eci`.
 
-- `01_live_accepted_output.json` is an `ACCEPTED` result for a public EN 16931 UBL fixture.
-- `02_live_rejected_output.json` is a `REJECTED` result for a deliberately incomplete UBL document.
+- `01_live_accepted_output.json` is an `ACCEPTED` result for the pinned official France_RFE EN 16931 UBL fixture.
+- `02_live_rejected_output.json` is a `REJECTED` result produced by emptying the invoice ID in that pinned fixture.
 - `03_live_not_evaluated_output.json` is a `NOT_EVALUATED` source-safety result caused by a non-HTTPS URL.
 
 The JSON files are verbatim dataset records. No field was reconstructed, inferred, or edited.
+
+A separate final-build release run `G5dhKHsKMUaXZdaZK`, build `0.0.4` (`vv4freSAs5T2ErfTr`), dataset `HvCe9Vik8A2YXPCYi`, returned `ACCEPTED` for the official Factur-X Extended PDF with `pdfaStatus: COMPLIANT` and `metadataStatus: CONSISTENT`. That additional evidence row is referenced in the README but is not copied into this repository.
 
 ## Privacy and security
 
 This repository contains no customer invoice, raw XML, PDF, base64 document, access token, cookie, signed URL, webhook URL, email address, bank detail, tax identifier, or customer account identifier.
 
-The accepted fixture is public test data. The rejected and source-error fixtures are synthetic. The output rows expose technical metadata and findings, not invoice parties, line items, payment details, or full invoice bodies.
+The accepted fixture is public test data. The rejected document is a deterministic mutation of that fixture, and the source-error entry is synthetic. The output rows expose technical metadata and findings, not invoice parties, line items, payment details, or full invoice bodies.
 
 Customer validation findings and optional reports can contain invoice values. Users remain responsible for lawful processing, access control, retention, deletion, and applicable privacy, tax, accounting, database, and contractual requirements.
 

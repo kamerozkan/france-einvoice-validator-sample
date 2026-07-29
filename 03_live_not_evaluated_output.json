@@ -1,11 +1,12 @@
 {
   "inputIndex": 2,
-  "documentId": "not-evaluated-http-source",
-  "fileName": "invoice.xml",
+  "documentId": "source-error",
+  "fileName": "blocked.xml",
   "processingStatus": "FAILED",
   "conformanceStatus": "NOT_EVALUATED",
   "previewConformanceStatus": "NOT_EVALUATED",
   "validationScope": "OFFLINE_PREFLIGHT",
+  "externalStateStatus": "NOT_EVALUATED_EXTERNAL_STATE",
   "rulesetEffectiveAt": "2026-09-01",
   "sourceFormat": "UNKNOWN",
   "validationFamily": "UNKNOWN",
@@ -29,7 +30,7 @@
       "name": "France_RFE 1.4.0.02",
       "effectiveAt": "2026-09-01"
     },
-    "artifactManifestSha256": "155a73f1d0a8a6abb2f2e209860b972db58dd81521a28ef3f87f5ca094ac04d6"
+    "artifactManifestSha256": "f9c1a666a033768c487d9905cbfe59afcb7648eabad5f95acc0292219bb1a32c"
   },
   "counts": {
     "fatal": 0,
@@ -50,7 +51,7 @@
   "sha256": null,
   "embeddedXmlSha256": null,
   "container": null,
-  "checkedAt": "2026-07-29T10:39:25.969300Z",
+  "checkedAt": "2026-07-29T11:53:41.080721Z",
   "reports": {},
   "error": {
     "code": "SOURCE_FETCH_FAILED",

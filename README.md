@@ -38,22 +38,23 @@ The Actor charges `$0.004` per evaluated document. A platform Actor-start event 
 
 ## Real output examples
 
-All three records below are verbatim rows from successful run `zRojE158Pc2yIwNba`, dataset `N3fw2lYnnT7Jmeica`.
+All three records below are verbatim rows from successful run `gihL6N622hQRnwK7K`, build `0.0.4` (`vv4freSAs5T2ErfTr`), dataset `akTMJBhWLCtUX8eci`.
 
 <details>
-<summary><strong>01. ACCEPTED</strong> - public EN 16931 UBL fixture</summary>
+<summary><strong>01. ACCEPTED</strong> - official France_RFE EN 16931 UBL fixture</summary>
 
 [`01_live_accepted_output.json`](01_live_accepted_output.json)
 
 ```json
 {
   "inputIndex": 0,
-  "documentId": "accepted-official-sample",
-  "fileName": "ubl-21-en16931.xml",
+  "documentId": "official-en16931-ubl",
+  "fileName": "official-en16931-ubl.xml",
   "processingStatus": "SUCCEEDED",
   "conformanceStatus": "ACCEPTED",
   "previewConformanceStatus": "NOT_EVALUATED",
   "validationScope": "OFFLINE_PREFLIGHT",
+  "externalStateStatus": "NOT_EVALUATED_EXTERNAL_STATE",
   "rulesetEffectiveAt": "2026-09-01",
   "sourceFormat": "XML",
   "validationFamily": "FRANCE_RFE",
@@ -77,7 +78,7 @@ All three records below are verbatim rows from successful run `zRojE158Pc2yIwNba
       "name": "France_RFE 1.4.0.02",
       "effectiveAt": "2026-09-01"
     },
-    "artifactManifestSha256": "155a73f1d0a8a6abb2f2e209860b972db58dd81521a28ef3f87f5ca094ac04d6"
+    "artifactManifestSha256": "f9c1a666a033768c487d9905cbfe59afcb7648eabad5f95acc0292219bb1a32c"
   },
   "counts": {
     "fatal": 0,
@@ -95,10 +96,10 @@ All three records below are verbatim rows from successful run `zRojE158Pc2yIwNba
   },
   "previewFindings": [],
   "previewFindingsTruncated": false,
-  "sha256": "90c598998073f00952bbcdb75ab9dbce02c2caeed26e88d3094eabeda982435a",
+  "sha256": "f4ff1b06f056255061a5acffbb86b8e793720b031d0d289adb7a6e53de9d9c25",
   "embeddedXmlSha256": null,
   "container": null,
-  "checkedAt": "2026-07-29T10:39:21.887450Z",
+  "checkedAt": "2026-07-29T11:53:35.576026Z",
   "reports": {},
   "error": null
 }
@@ -107,19 +108,20 @@ All three records below are verbatim rows from successful run `zRojE158Pc2yIwNba
 </details>
 
 <details>
-<summary><strong>02. REJECTED</strong> - incomplete UBL with bounded technical findings</summary>
+<summary><strong>02. REJECTED</strong> - official fixture mutated with an empty invoice ID</summary>
 
 [`02_live_rejected_output.json`](02_live_rejected_output.json)
 
 ```json
 {
   "inputIndex": 1,
-  "documentId": "rejected-incomplete-ubl",
-  "fileName": "incomplete-ubl.xml",
+  "documentId": "mutated-missing-invoice-id",
+  "fileName": "mutated-missing-invoice-id.xml",
   "processingStatus": "SUCCEEDED",
   "conformanceStatus": "REJECTED",
   "previewConformanceStatus": "NOT_EVALUATED",
   "validationScope": "OFFLINE_PREFLIGHT",
+  "externalStateStatus": "NOT_EVALUATED_EXTERNAL_STATE",
   "rulesetEffectiveAt": "2026-09-01",
   "sourceFormat": "XML",
   "validationFamily": "FRANCE_RFE",
@@ -143,63 +145,62 @@ All three records below are verbatim rows from successful run `zRojE158Pc2yIwNba
       "name": "France_RFE 1.4.0.02",
       "effectiveAt": "2026-09-01"
     },
-    "artifactManifestSha256": "155a73f1d0a8a6abb2f2e209860b972db58dd81521a28ef3f87f5ca094ac04d6"
+    "artifactManifestSha256": "f9c1a666a033768c487d9905cbfe59afcb7648eabad5f95acc0292219bb1a32c"
   },
   "counts": {
-    "fatal": 16,
-    "error": 2,
-    "warning": 6,
+    "fatal": 3,
+    "error": 0,
+    "warning": 2,
     "information": 0
   },
   "findings": [
     {
-      "severity": "ERROR",
-      "stage": "XSD",
-      "ruleId": "SCHEMAV_ELEMENT_CONTENT",
-      "message": "Element '{urn:oasis:names:specification:ubl:schema:xsd:Invoice-2}Invoice': Missing child element(s). Expected is one of ( {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}CopyIndicator, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}UUID, {urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2}IssueDate ).",
-      "location": "/*",
-      "ruleset": "UBL-2.1-INVOICE-XSD",
-      "line": 1,
-      "column": 0
-    },
-    {
       "severity": "FATAL",
       "stage": "EN16931",
-      "ruleId": "BR-01",
-      "message": "[BR-01]-An Invoice shall have a Specification identifier (BT-24).",
+      "ruleId": "BR-02",
+      "message": "[BR-02]-An Invoice shall have an Invoice number (BT-1).",
       "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
-      "test": "normalize-space(cbc:CustomizationID) != ''",
+      "test": "normalize-space(cbc:ID) != ''",
       "ruleset": "EN16931-1.3.16-UBL"
     },
     {
       "severity": "FATAL",
-      "stage": "EN16931",
-      "ruleId": "BR-03",
-      "message": "[BR-03]-An Invoice shall have an Invoice issue date (BT-2).",
-      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
-      "test": "normalize-space(cbc:IssueDate) != ''",
-      "ruleset": "EN16931-1.3.16-UBL"
+      "stage": "FRANCE_CIUS",
+      "ruleId": "BR-FR-01_BT-1-2",
+      "message": "[BR-FR-01/BT-1] : L'identifiant de facture (cbc:ID) contient des caractères non autorisés. Valeur actuelle : \"\". Seuls les caractères alphanumériques et les symboles + - _ / sont autorisés, sans espaces.",
+      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]/*:ID[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2'][1]",
+      "test": "custom:is-valid-id-format(.)",
+      "ruleset": "FRANCE-RFE-1.4.0.02-UBL"
     },
     {
       "severity": "FATAL",
-      "stage": "EN16931",
-      "ruleId": "BR-04",
-      "message": "[BR-04]-An Invoice shall have an Invoice type code (BT-3).",
-      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
-      "test": "normalize-space(cbc:InvoiceTypeCode) != '' or normalize-space(cbc:CreditNoteTypeCode) !=''",
-      "ruleset": "EN16931-1.3.16-UBL"
+      "stage": "FRANCE_CIUS",
+      "ruleId": "BR-FR-02_BT-1",
+      "message": "[BR-FR-02/BT-1 : L'identifiant de facture (cbc:ID) doit être composé uniquement de caractères alphanumériques (A-Z, a-z, 0-9) et peut contenir les caractères spéciaux autorisés : tiret (-), plus (+), tiret bas (_), barre oblique (/). Il ne doit pas contenir uniquement des espaces, ni commencer ou se terminer par un espace, ni contenir d'espaces consécutifs. Valeur actuelle : \"\". Veuillez corriger le format de l'identifiant.",
+      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]/*:ID[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2'][1]",
+      "test": "custom:is-valid-id-format(.)",
+      "ruleset": "FRANCE-RFE-1.4.0.02-UBL"
     },
     {
-      "severity": "FATAL",
-      "stage": "EN16931",
-      "ruleId": "BR-05",
-      "message": "[BR-05]-An Invoice shall have an Invoice currency code (BT-5).",
-      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]",
-      "test": "normalize-space(cbc:DocumentCurrencyCode) != ''",
-      "ruleset": "EN16931-1.3.16-UBL"
+      "severity": "WARNING",
+      "stage": "FRANCE_CIUS",
+      "ruleId": "BR-FR-01_BT-1-2",
+      "message": "[BR-FR-01/BT-1] : L'identifiant de facture (cbc:ID) contient des caractères non autorisés. Valeur actuelle : \"\". Seuls les caractères alphanumériques et les symboles + - _ / sont autorisés, sans espaces.",
+      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]/*:ID[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2'][1]",
+      "test": "custom:is-valid-id-format(.)",
+      "ruleset": "FRANCE-RFE-1.4.0.02-UBL-WARNINGS"
+    },
+    {
+      "severity": "WARNING",
+      "stage": "FRANCE_CIUS",
+      "ruleId": "BR-FR-02_BT-1",
+      "message": "[BR-FR-02/BT-1 : L'identifiant de facture (cbc:ID) doit être composé uniquement de caractères alphanumériques (A-Z, a-z, 0-9) et peut contenir les caractères spéciaux autorisés : tiret (-), plus (+), tiret bas (_), barre oblique (/). Il ne doit pas contenir uniquement des espaces, ni commencer ou se terminer par un espace, ni contenir d'espaces consécutifs. Valeur actuelle : \"\". Veuillez corriger le format de l'identifiant.",
+      "location": "/*:Invoice[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:Invoice-2'][1]/*:ID[namespace-uri()='urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2'][1]",
+      "test": "custom:is-valid-id-format(.)",
+      "ruleset": "FRANCE-RFE-1.4.0.02-UBL-WARNINGS"
     }
   ],
-  "findingsTruncated": true,
+  "findingsTruncated": false,
   "previewCounts": {
     "fatal": 0,
     "error": 0,
@@ -208,10 +209,10 @@ All three records below are verbatim rows from successful run `zRojE158Pc2yIwNba
   },
   "previewFindings": [],
   "previewFindingsTruncated": false,
-  "sha256": "c93ffbc01ae38cdb76d5e2176ea2ddf20e0ea0d9a7cf4c04ab884e330a24d8b9",
+  "sha256": "72626abb163a2f3092f5adeabae4d3ff39a45ae03856f3e5b4dd0efa3bdac358",
   "embeddedXmlSha256": null,
   "container": null,
-  "checkedAt": "2026-07-29T10:39:25.883652Z",
+  "checkedAt": "2026-07-29T11:53:41.008116Z",
   "reports": {},
   "error": null
 }
@@ -227,12 +228,13 @@ All three records below are verbatim rows from successful run `zRojE158Pc2yIwNba
 ```json
 {
   "inputIndex": 2,
-  "documentId": "not-evaluated-http-source",
-  "fileName": "invoice.xml",
+  "documentId": "source-error",
+  "fileName": "blocked.xml",
   "processingStatus": "FAILED",
   "conformanceStatus": "NOT_EVALUATED",
   "previewConformanceStatus": "NOT_EVALUATED",
   "validationScope": "OFFLINE_PREFLIGHT",
+  "externalStateStatus": "NOT_EVALUATED_EXTERNAL_STATE",
   "rulesetEffectiveAt": "2026-09-01",
   "sourceFormat": "UNKNOWN",
   "validationFamily": "UNKNOWN",
@@ -256,7 +258,7 @@ All three records below are verbatim rows from successful run `zRojE158Pc2yIwNba
       "name": "France_RFE 1.4.0.02",
       "effectiveAt": "2026-09-01"
     },
-    "artifactManifestSha256": "155a73f1d0a8a6abb2f2e209860b972db58dd81521a28ef3f87f5ca094ac04d6"
+    "artifactManifestSha256": "f9c1a666a033768c487d9905cbfe59afcb7648eabad5f95acc0292219bb1a32c"
   },
   "counts": {
     "fatal": 0,
@@ -277,7 +279,7 @@ All three records below are verbatim rows from successful run `zRojE158Pc2yIwNba
   "sha256": null,
   "embeddedXmlSha256": null,
   "container": null,
-  "checkedAt": "2026-07-29T10:39:25.969300Z",
+  "checkedAt": "2026-07-29T11:53:41.080721Z",
   "reports": {},
   "error": {
     "code": "SOURCE_FETCH_FAILED",
@@ -287,6 +289,19 @@ All three records below are verbatim rows from successful run `zRojE158Pc2yIwNba
 ```
 
 </details>
+
+## Final-build release evidence
+
+A separate build-matched smoke run `G5dhKHsKMUaXZdaZK`, build `0.0.4` (`vv4freSAs5T2ErfTr`), dataset `HvCe9Vik8A2YXPCYi`, validated the official Factur-X Extended PDF:
+
+- `conformanceStatus: ACCEPTED`
+- `sourceFormat: FACTUR_X_PDF`
+- `profile: FRANCE_FACTUR_X_EXTENDED`
+- `pdfaStatus: COMPLIANT`
+- `metadataStatus: CONSISTENT`
+- embedded `factur-x.xml` SHA-256: `c1c8eb44f72fa168f347cf72c843c2c9c5bb625b5019b60b20403d39f47c9157`
+
+The same row reports `visibleContentConsistency: NOT_VERIFIED` and `signatureStatus: NOT_CHECKED`; it does not extend the Actor's technical-preflight claim. This additional evidence row is not one of the three JSON sample files above.
 
 ## Supported routes
 
@@ -305,6 +320,7 @@ Use [`dataset_record.schema.json`](dataset_record.schema.json) to validate store
 processingStatus -> SUCCEEDED | FAILED
 conformanceStatus -> ACCEPTED | REJECTED | NOT_EVALUATED
 validationScope -> OFFLINE_PREFLIGHT
+externalStateStatus -> NOT_EVALUATED_EXTERNAL_STATE
 findings[] -> severity, stage, ruleId, message, location
 versions{} -> pinned rule and artifact identities
 ```

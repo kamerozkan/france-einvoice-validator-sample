@@ -1,11 +1,12 @@
 {
   "inputIndex": 0,
-  "documentId": "accepted-official-sample",
-  "fileName": "ubl-21-en16931.xml",
+  "documentId": "official-en16931-ubl",
+  "fileName": "official-en16931-ubl.xml",
   "processingStatus": "SUCCEEDED",
   "conformanceStatus": "ACCEPTED",
   "previewConformanceStatus": "NOT_EVALUATED",
   "validationScope": "OFFLINE_PREFLIGHT",
+  "externalStateStatus": "NOT_EVALUATED_EXTERNAL_STATE",
   "rulesetEffectiveAt": "2026-09-01",
   "sourceFormat": "XML",
   "validationFamily": "FRANCE_RFE",
@@ -29,7 +30,7 @@
       "name": "France_RFE 1.4.0.02",
       "effectiveAt": "2026-09-01"
     },
-    "artifactManifestSha256": "155a73f1d0a8a6abb2f2e209860b972db58dd81521a28ef3f87f5ca094ac04d6"
+    "artifactManifestSha256": "f9c1a666a033768c487d9905cbfe59afcb7648eabad5f95acc0292219bb1a32c"
   },
   "counts": {
     "fatal": 0,
@@ -47,10 +48,10 @@
   },
   "previewFindings": [],
   "previewFindingsTruncated": false,
-  "sha256": "90c598998073f00952bbcdb75ab9dbce02c2caeed26e88d3094eabeda982435a",
+  "sha256": "f4ff1b06f056255061a5acffbb86b8e793720b031d0d289adb7a6e53de9d9c25",
   "embeddedXmlSha256": null,
   "container": null,
-  "checkedAt": "2026-07-29T10:39:21.887450Z",
+  "checkedAt": "2026-07-29T11:53:35.576026Z",
   "reports": {},
   "error": null
 }
