@@ -1,0 +1,56 @@
+{
+  "inputIndex": 0,
+  "documentId": "accepted-official-sample",
+  "fileName": "ubl-21-en16931.xml",
+  "processingStatus": "SUCCEEDED",
+  "conformanceStatus": "ACCEPTED",
+  "previewConformanceStatus": "NOT_EVALUATED",
+  "validationScope": "OFFLINE_PREFLIGHT",
+  "rulesetEffectiveAt": "2026-09-01",
+  "sourceFormat": "XML",
+  "validationFamily": "FRANCE_RFE",
+  "syntax": "UBL_INVOICE",
+  "profile": "FRANCE_EN16931_UBL",
+  "scenario": "France RFE EN 16931 UBL 2.1 Invoice",
+  "versions": {
+    "franceRfe": "1.4.0.02",
+    "franceRfeCommit": "e9520ce398cc99bed4bab493773a494af8ca5aff",
+    "franceRfeArchiveSha256": "5d30054c99d970457ca50c89ce895770cae695f5fe8d73750433079f9f1ec3a1",
+    "xpZ12_012": "1.4",
+    "ubl": "2.1",
+    "cii": "D22B",
+    "en16931Schematron": "1.3.16",
+    "facturX": "1.09",
+    "facturXExtendedSchemaPatch": "1.09.2",
+    "mustang": "2.24.0",
+    "saxonHe": "12.8",
+    "veraPdf": "1.30.2",
+    "activeRuleset": {
+      "name": "France_RFE 1.4.0.02",
+      "effectiveAt": "2026-09-01"
+    },
+    "artifactManifestSha256": "155a73f1d0a8a6abb2f2e209860b972db58dd81521a28ef3f87f5ca094ac04d6"
+  },
+  "counts": {
+    "fatal": 0,
+    "error": 0,
+    "warning": 0,
+    "information": 0
+  },
+  "findings": [],
+  "findingsTruncated": false,
+  "previewCounts": {
+    "fatal": 0,
+    "error": 0,
+    "warning": 0,
+    "information": 0
+  },
+  "previewFindings": [],
+  "previewFindingsTruncated": false,
+  "sha256": "90c598998073f00952bbcdb75ab9dbce02c2caeed26e88d3094eabeda982435a",
+  "embeddedXmlSha256": null,
+  "container": null,
+  "checkedAt": "2026-07-29T10:39:21.887450Z",
+  "reports": {},
+  "error": null
+}

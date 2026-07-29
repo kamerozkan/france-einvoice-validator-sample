@@ -1,0 +1,318 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/kamerozkan/france-einvoice-validator-sample/main/dataset_record.schema.json",
+  "title": "France E-Invoice Validator dataset record",
+  "description": "One deterministic offline technical preflight result.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "inputIndex": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "documentId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "fileName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "processingStatus": {
+      "type": "string",
+      "enum": [
+        "SUCCEEDED",
+        "FAILED"
+      ]
+    },
+    "conformanceStatus": {
+      "$ref": "#/$defs/conformanceStatus"
+    },
+    "previewConformanceStatus": {
+      "$ref": "#/$defs/conformanceStatus"
+    },
+    "validationScope": {
+      "const": "OFFLINE_PREFLIGHT"
+    },
+    "rulesetEffectiveAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "sourceFormat": {
+      "type": "string"
+    },
+    "validationFamily": {
+      "type": "string"
+    },
+    "syntax": {
+      "type": "string"
+    },
+    "profile": {
+      "type": "string"
+    },
+    "scenario": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "versions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": true
+    },
+    "counts": {
+      "$ref": "#/$defs/counts"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "findingsTruncated": {
+      "type": "boolean"
+    },
+    "previewCounts": {
+      "$ref": "#/$defs/counts"
+    },
+    "previewFindings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/finding"
+      }
+    },
+    "previewFindingsTruncated": {
+      "type": "boolean"
+    },
+    "sha256": {
+      "$ref": "#/$defs/nullableSha256"
+    },
+    "embeddedXmlSha256": {
+      "$ref": "#/$defs/nullableSha256"
+    },
+    "container": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": true
+    },
+    "checkedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "reports": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "error": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/error"
+        }
+      ]
+    }
+  },
+  "required": [
+    "inputIndex",
+    "documentId",
+    "fileName",
+    "processingStatus",
+    "conformanceStatus",
+    "previewConformanceStatus",
+    "validationScope",
+    "rulesetEffectiveAt",
+    "sourceFormat",
+    "validationFamily",
+    "syntax",
+    "profile",
+    "scenario",
+    "versions",
+    "counts",
+    "findings",
+    "findingsTruncated",
+    "previewCounts",
+    "previewFindings",
+    "previewFindingsTruncated",
+    "sha256",
+    "embeddedXmlSha256",
+    "container",
+    "checkedAt",
+    "reports",
+    "error"
+  ],
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "processingStatus": {
+            "const": "FAILED"
+          }
+        },
+        "required": [
+          "processingStatus"
+        ]
+      },
+      "then": {
+        "properties": {
+          "conformanceStatus": {
+            "const": "NOT_EVALUATED"
+          },
+          "error": {
+            "$ref": "#/$defs/error"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "conformanceStatus": {
+            "enum": [
+              "ACCEPTED",
+              "REJECTED"
+            ]
+          }
+        },
+        "required": [
+          "conformanceStatus"
+        ]
+      },
+      "then": {
+        "properties": {
+          "processingStatus": {
+            "const": "SUCCEEDED"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "error": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "conformanceStatus": {
+      "type": "string",
+      "enum": [
+        "ACCEPTED",
+        "REJECTED",
+        "NOT_EVALUATED"
+      ]
+    },
+    "nullableSha256": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "fatal": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "error": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warning": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "information": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "fatal",
+        "error",
+        "warning",
+        "information"
+      ]
+    },
+    "finding": {
+      "type": "object",
+      "properties": {
+        "severity": {
+          "type": "string",
+          "enum": [
+            "FATAL",
+            "ERROR",
+            "WARNING",
+            "INFORMATION"
+          ]
+        },
+        "stage": {
+          "type": "string"
+        },
+        "ruleId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "message": {
+          "type": "string"
+        },
+        "location": {
+          "type": "string"
+        },
+        "test": {
+          "type": "string"
+        },
+        "ruleset": {
+          "type": "string"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "column": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "severity",
+        "stage",
+        "ruleId",
+        "message"
+      ],
+      "additionalProperties": true
+    },
+    "error": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ]
+    }
+  }
+}
