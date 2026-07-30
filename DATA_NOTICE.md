@@ -10,11 +10,21 @@ The Actor and this repository are independent, unofficial products. They are not
 
 The three JSON records were retrieved on 2026-07-29 from successful Apify run `gihL6N622hQRnwK7K`, build `0.0.4` (`vv4freSAs5T2ErfTr`), dataset `akTMJBhWLCtUX8eci`.
 
+The public Actor's latest hosted build was separately verified as `0.0.7` `SUCCEEDED` on 2026-07-30. This newer build state does not change the attribution of the three sample rows.
+
 - `01_live_accepted_output.json` is an `ACCEPTED` result for the pinned official France_RFE EN 16931 UBL fixture.
 - `02_live_rejected_output.json` is a `REJECTED` result produced by emptying the invoice ID in that pinned fixture.
 - `03_live_not_evaluated_output.json` is a `NOT_EVALUATED` source-safety result caused by a non-HTTPS URL.
 
 The JSON files are verbatim dataset records. No field was reconstructed, inferred, or edited.
+
+## Runnable input provenance
+
+- [`01_accepted_input.json`](01_accepted_input.json) points to the committed official France_RFE EN 16931 UBL fixture. Its SHA-256 matches `01_live_accepted_output.json`.
+- [`02_rejected_input.json`](02_rejected_input.json) points to the committed deterministic empty-invoice-ID mutation. Its SHA-256 matches `02_live_rejected_output.json`.
+- [`03_not_evaluated_input.json`](03_not_evaluated_input.json) intentionally uses a non-HTTPS URL and demonstrates the documented source-policy rejection.
+
+The France_RFE source fixture was extracted from release `1.4.0.02`; the upstream archive SHA-256 is `5d30054c99d970457ca50c89ce895770cae695f5fe8d73750433079f9f1ec3a1`. The linked input files become runnable from their raw GitHub URLs when this repository refresh is published.
 
 A separate final-build release run `G5dhKHsKMUaXZdaZK`, build `0.0.4` (`vv4freSAs5T2ErfTr`), dataset `HvCe9Vik8A2YXPCYi`, returned `ACCEPTED` for the official Factur-X Extended PDF with `pdfaStatus: COMPLIANT` and `metadataStatus: CONSISTENT`. That additional evidence row is referenced in the README but is not copied into this repository.
 

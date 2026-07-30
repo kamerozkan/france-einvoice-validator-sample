@@ -1,0 +1,15 @@
+{
+  "documents": [
+    {
+      "documentId": "mutated-missing-invoice-id",
+      "fileName": "mutated-missing-invoice-id.xml",
+      "url": "https://raw.githubusercontent.com/kamerozkan/france-einvoice-validator-sample/main/fixtures/mutated-missing-invoice-id.xml"
+    }
+  ],
+  "resultDetail": "FINDINGS",
+  "maxFindingsPerDocument": 100,
+  "storeXmlReport": false,
+  "storeHtmlReport": false,
+  "storePdfaReport": false,
+  "storeExtractedInvoiceXml": false
+}

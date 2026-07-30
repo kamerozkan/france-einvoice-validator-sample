@@ -1,0 +1,15 @@
+{
+  "documents": [
+    {
+      "documentId": "source-error",
+      "fileName": "blocked.xml",
+      "url": "http://example.invalid/blocked.xml"
+    }
+  ],
+  "resultDetail": "FINDINGS",
+  "maxFindingsPerDocument": 100,
+  "storeXmlReport": false,
+  "storeHtmlReport": false,
+  "storePdfaReport": false,
+  "storeExtractedInvoiceXml": false
+}

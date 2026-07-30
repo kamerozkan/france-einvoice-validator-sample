@@ -1,0 +1,15 @@
+{
+  "documents": [
+    {
+      "documentId": "official-en16931-ubl",
+      "fileName": "official-en16931-ubl.xml",
+      "url": "https://raw.githubusercontent.com/kamerozkan/france-einvoice-validator-sample/main/fixtures/official-en16931-ubl.xml"
+    }
+  ],
+  "resultDetail": "FINDINGS",
+  "maxFindingsPerDocument": 100,
+  "storeXmlReport": false,
+  "storeHtmlReport": false,
+  "storePdfaReport": false,
+  "storeExtractedInvoiceXml": false
+}
