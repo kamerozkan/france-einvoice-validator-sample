@@ -1,0 +1,15 @@
+{
+  "id": "Y1W5FA3wV8IF3fUla",
+  "name": "france-einvoice-validator",
+  "title": "France E-Invoice Validator API - Factur-X, UBL & CII",
+  "description": "France e-invoice validator for Factur-X, UBL and CII invoices. Run offline technical checks against pinned France_RFE, EN 16931 and EXTENDED-CTC-FR rules. Export structured findings and optional JSON, HTML or text batch reports before submission to a platform or Chorus Pro.",
+  "seoTitle": "France E-Invoice Validator - Factur-X, UBL & CII",
+  "seoDescription": "Validate French Factur-X, UBL and CII invoices offline with pinned France_RFE and EN 16931 rules. Export batch findings and reports before submission.",
+  "isPublic": true,
+  "url": "https://apify.com/kamerozkan/france-einvoice-validator",
+  "checkedAt": "2026-09-30",
+  "changeScope": "listing metadata and sample documentation only",
+  "runtimeChanged": false,
+  "schemasChanged": false,
+  "examplesRegenerated": false
+}

@@ -49,3 +49,7 @@ Customer validation findings and optional reports can contain invoice values. Us
 The MIT License applies only to the original documentation, JSON output samples, and JSON Schema committed here.
 
 It does not relicense France_RFE, EN 16931, UBL, CII, Factur-X, veraPDF, Mustangproject, public fixtures, specifications, third-party software, names, marks, or report formats. Review upstream licenses and terms before redistribution or commercial use.
+
+## Listing update on September 30, 2026
+
+The Store title, description and search metadata were checked against the owned Actor and synchronized with this repository. This documentation update does not alter executable code, input or output schemas, recorded test outputs, artifact hashes, billing or runtime builds. Existing examples retain their original dates and validation limits. A public listing is not evidence of successful output, network acceptance or an achieved search ranking.
